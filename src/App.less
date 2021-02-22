@@ -1,0 +1,85 @@
+html div{
+  border-radius: 3px;
+}
+
+.select-figure-container {
+  width: 200px;
+  margin: 30px auto;
+  display: flex;
+
+  .select-figure {
+    margin: 5px;
+    float: left;
+    flex: 1;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 40px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.select-figure-container.disabled {
+  .select-figure {
+    &:hover {
+      cursor: not-allowed;
+      background: transparent;
+    }
+  }
+}
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2px;
+  height: 500px;
+  width: 480px;
+  background-color: black;
+
+  .field-container {
+    width: 150px;
+    height: 155px;
+    background-color: white;
+    margin: 5px;
+    text-align: center;
+    font-size: 140px;
+    overflow: hidden;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.restart-button {
+  margin: 2px;
+  font-size: 50px;
+  text-align: center;
+  width: 100px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-flow: row;
+  justify-content: center;
+  align-items: flex-start;
+  order: 2;
+}
+
+.blinked {
+  color: green;
+  animation: blinker 1s linear 2;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
