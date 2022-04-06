@@ -34,18 +34,12 @@ export const POSSIBILITY_WIN = [
   [7, 8],
   [7, 9],
   [8, 9],
-]
+];
 
 const utils = {
-  containsAll: (values, array) => {
-    return values.every((val) => array.includes(val));
-  },
-  randomBoolean: () => {
-    return Math.random() < 0.5;
-  },
-  randomInteger: (range) => {
-    return Math.floor(Math.random() * range)
-  }
+  containsAll: (values, array) => values.every((val) => array.includes(val)),
+  randomBoolean: () => Math.random() < 0.5,
+  randomInteger: (range) => Math.floor(Math.random() * range),
 };
 
 export default utils;

@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import { connect } from 'react-redux';
+import { RiRestartLine } from 'react-icons/ri';
 import { getGame } from '../redux/selectors';
 import { restartGame } from '../redux/actions';
-import "../App.less";
-import { RiRestartLine } from "react-icons/ri";
+import '../App.less';
 
-const RestartButton = ({ gameStart, restartGame }) => {
+function RestartButton({ gameStart, restartGame }) {
   if (gameStart) {
     return (
-      <div className="restart-button" onClick={() => restartGame() }>
+      <div className="restart-button" onClick={() => restartGame()}>
         <RiRestartLine />
       </div>
     );
@@ -18,11 +18,11 @@ const RestartButton = ({ gameStart, restartGame }) => {
 }
 
 const mapStateToProps = (state) => ({
-  gameStart: getGame(state).gameStart
-})
+  gameStart: getGame(state).gameStart,
+});
 
-const mapDispatchToProps = dispatch => ({
-  restartGame: () => dispatch(restartGame())
+const mapDispatchToProps = (dispatch) => ({
+  restartGame: () => dispatch(restartGame()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RestartButton);
