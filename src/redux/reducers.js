@@ -18,7 +18,7 @@ const initialState = {
 
 const getOpponentFigure = (playerFigure) => (playerFigure === 'kolo' ? 'krzyzyk' : 'kolo');
 
-const ticTacToe = (action, state = initialState) => {
+const ticTacToe = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {

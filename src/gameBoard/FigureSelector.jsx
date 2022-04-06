@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { ImCross } from 'react-icons/im';
 import { BsCircle } from 'react-icons/bs';
 import Figure from './Figure';
-import { isFigureSelectDisabled } from '../redux/selectors';
+import { isFigureSelectorDisabled } from '../redux/selectors';
 import '../App.less';
 
-function SelectFigure({ isFigureSelectDisabled }) {
+function SelectFigure({ isFigureSelectorDisabled }) {
   return (
-    <div className={`select-figure-container${isFigureSelectDisabled ? ' disabled' : ''}`}>
+    <div className={`select-figure-container${isFigureSelectorDisabled ? ' disabled' : ''}`}>
       <Figure figureName="kolo" icon={<BsCircle />} />
       <Figure figureName="krzyzyk" icon={<ImCross />} />
     </div>
@@ -16,7 +16,7 @@ function SelectFigure({ isFigureSelectDisabled }) {
 }
 
 const mapStateToProps = (state) => ({
-  isFigureSelectDisabled: isFigureSelectDisabled(state),
+  isFigureSelectorDisabled: isFigureSelectorDisabled(state),
 });
 
 export default connect(mapStateToProps, null)(SelectFigure);

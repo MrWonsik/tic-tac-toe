@@ -8,6 +8,10 @@ npm start
 
 The game will be available at http://localhost:3000
 
+## DEMO
+
+![Demo](tic-tac-toe.gif)
+
 ## DEV NOTE:
 This is one of my first react project. 
 I wanted to develop and refactor it a bit after some time, but the code is really ugly, and work with it is *terrible*! :flushed:

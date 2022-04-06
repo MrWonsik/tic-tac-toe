@@ -10,7 +10,7 @@ function Figure({
   return (
     <div
       name={figureName}
-      className="figure select-figure"
+      className={`figure select-figure ${playerFigure === figureName ? 'selected' : ''}`}
       onClick={() => { if (playerFigure === '') onFigureClicked(figureName); }}
     >
       {icon}
