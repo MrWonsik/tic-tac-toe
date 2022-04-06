@@ -1,0 +1,4 @@
+1. get rid of var, (use const/let instead of this)
+2. change connect to useDispatch and useSelector
+3. Read about useState and useEffect for react REDUX
+4. improve asynchnrous oponent move (he do his move after win game by player)

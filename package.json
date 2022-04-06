@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx webpack serve --mode development",
-    "build": "npx webpack --mode development",
-    "test": "mocha \"src/**/*.test.js\" --require @babel/register --recursive"
+    "build": "npx webpack --mode development"
   },
   "keywords": [],
   "author": "",

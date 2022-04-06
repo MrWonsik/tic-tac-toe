@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { getGame } from './selectors';
-import { restartGame } from './actions';
+import { getGame } from '../redux/selectors';
+import { restartGame } from '../redux/actions';
 import "../App.less";
 import { RiRestartLine } from "react-icons/ri";
 

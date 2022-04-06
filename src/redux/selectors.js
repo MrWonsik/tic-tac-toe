@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect'
 
 export const getPlayerFigure = state => state.ticTacToe.playerFigure;
-export const getOponentFigure = state => state.ticTacToe.oponentFigure;
-export const isSelectFigureDisabled = state => state.ticTacToe.isSelectFigureDisabled;
+export const getOpponentFigure = state => state.ticTacToe.opponentFigure;
+export const isFigureSelectDisabled = state => state.ticTacToe.isFigureSelectDisabled;
 export const getGame = state => state.ticTacToe.game;
 
 export const getGameMap = createSelector(

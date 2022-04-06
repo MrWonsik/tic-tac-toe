@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { selectFigure } from './actions'
-import { getPlayerFigure } from './selectors'
+import { selectFigure } from '../redux/actions'
+import { getPlayerFigure } from '../redux/selectors'
 import "../App.less";
 
 const Figure = ({ figureName, icon, onFigureClicked, playerFigure }) => (

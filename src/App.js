@@ -1,32 +1,32 @@
 import React, { useEffect } from "react";
 import "./App.less";
 import { connect } from 'react-redux';
-import { getGame, getPlayerFigure, getOponentFigure } from './tic-tac-toe/selectors';
-import { oponentClickField, endGame } from './tic-tac-toe/actions'
-import GameContainer from "./tic-tac-toe/GameContainer.js";
-import utils, {WIN, POSIBILITY_WIN} from "./tic-tac-toe/utils";
+import { getGame, getPlayerFigure, getOpponentFigure } from './redux/selectors';
+import { opponentClickField, endGame } from './redux/actions'
+import GameContainer from "./gameBoard/GameContainer.js";
+import utils, {WIN, POSSIBILITY_WIN} from "./gameBoard/utils";
 
-const App = ({ game, clickFieldByOponent, endTheGame, playerFigure, oponentFigure }) => {
+const App = ({ game, clickFieldByOpponent, endTheGame, playerFigure, opponentFigure }) => {
 
   useEffect(() => {
     endGameChecker(playerFigure);
     if(!game.gameEnd) {
-      setTimeout(() => oponentTurn(), 300);
-      endGameChecker(oponentFigure);
+      setTimeout(() => opponentTurn(), 300);
+      endGameChecker(opponentFigure);
     }
   }, [game.isPlayerTurn, game.gameEnd]);
 
-  const getOponentFieldId = () => {
+  const getOpponentFieldId = () => {
     if (game.gameMap.length === 0 || isFieldEmpty(5)) { 
       return 5;
     }
 
-    var winningFields = getAllPosibilityWiningFieldsFor(oponentFigure);
+    var winningFields = getAllPossibilityWiningFieldsFor(opponentFigure);
     if (winningFields.length > 0) {
       return winningFields[utils.randomInteger(winningFields.length)];
     } 
 
-    var blockingFields = getAllPosibilityWiningFieldsFor(playerFigure);
+    var blockingFields = getAllPossibilityWiningFieldsFor(playerFigure);
     if (blockingFields.length > 0) {
       return blockingFields[utils.randomInteger(blockingFields.length)];
     }
@@ -34,17 +34,17 @@ const App = ({ game, clickFieldByOponent, endTheGame, playerFigure, oponentFigur
     return getEmptyRandomField();
   };
 
-  const getAllPosibilityWiningFieldsFor = (figure) => {
-    var posibileMoves = [];
+  const getAllPossibilityWiningFieldsFor = (figure) => {
+    var possibleMoves = [];
 
-    POSIBILITY_WIN.forEach((winningFields) => {
+    POSSIBILITY_WIN.forEach((winningFields) => {
       if (utils.containsAll(winningFields, getAllFields(figure))) {
         WIN.forEach((winField) => {
           if (utils.containsAll(winningFields, winField)) {
             winField.forEach((field) => {
               winningFields.forEach((posField) => {
                 if (field !== posField && isFieldEmpty(field)) {
-                  posibileMoves.push(field);
+                  possibleMoves.push(field);
                 }
               });
             });
@@ -52,7 +52,7 @@ const App = ({ game, clickFieldByOponent, endTheGame, playerFigure, oponentFigur
         });
       }
     });
-    return posibileMoves;
+    return possibleMoves;
   };
 
   const getAllFields = (figureName) => (game.gameMap.filter((field) => field.val === figureName).map((field) => field.id));
@@ -67,9 +67,9 @@ const App = ({ game, clickFieldByOponent, endTheGame, playerFigure, oponentFigur
 
   const isFieldEmpty = (fieldId) => (!game.gameMap.some((val) => val.id === fieldId));
 
-  const oponentTurn = () => {
+  const opponentTurn = () => {
     if (game.gameStart && !game.gameEnd && !game.isPlayerTurn) {
-      clickFieldByOponent(getOponentFieldId());
+      clickFieldByOpponent(getOpponentFieldId());
     }
   };
 
@@ -97,11 +97,11 @@ const App = ({ game, clickFieldByOponent, endTheGame, playerFigure, oponentFigur
 const mapStateToProps = (state) => ({
   game: getGame(state),
   playerFigure: getPlayerFigure(state),
-  oponentFigure: getOponentFigure(state),
+  opponentFigure: getOpponentFigure(state),
 })
 
 const mapDispatchToProps = dispatch => ({
-  clickFieldByOponent: (id) => dispatch(oponentClickField(id)),
+  clickFieldByOpponent: (id) => dispatch(opponentClickField(id)),
   endTheGame: (winFields) => dispatch(endGame(winFields))
 });
 

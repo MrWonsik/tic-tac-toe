@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { ticTacToe } from './tic-tac-toe/reducers';
+import { ticTacToe } from './reducers';
 
 const reducers = {
     ticTacToe

@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from 'react-redux';
 import { ImCross } from "react-icons/im";
 import { BsCircle } from "react-icons/bs";
-import { getGame } from './selectors'
-import { clickField } from './actions'
+import { getGame } from '../redux/selectors'
+import { clickField } from '../redux/actions'
 import "../App.less";
 
 const Field = ({ field, fieldsClicked, game }) => {
@@ -13,17 +13,18 @@ const Field = ({ field, fieldsClicked, game }) => {
       ? <BsCircle className={field.shouldBlinked ? "blinked" : ""} /> 
       : <ImCross className={field.shouldBlinked ? "blinked" : ""} />
     );
-
-  const checkIfFieldsIsEmpty = (id) => (!game.gameMap.some((val) => val.id === id));
+  
+  const handleFieldClick = () => {
+    const checkIfFieldsIsEmpty = (id) => (!game.gameMap.some((val) => val.id === id));
+    if(game.gameStart && !game.gameEnd && game.isPlayerTurn && checkIfFieldsIsEmpty(field.id)) {
+      fieldsClicked(field.id);
+    }
+  }
 
   var fieldFigure = game.gameMap.find(searchField => searchField.id === field.id);
   return (
-    <div className={"field-container"} onClick={() => {
-      if(game.gameStart && !game.gameEnd && game.isPlayerTurn && checkIfFieldsIsEmpty(field.id)) {
-        fieldsClicked(field.id);
-      }
-    }}>
-      {fieldFigure ? returnFigure(fieldFigure.val) : ""}
+    <div className={"field-container"} onClick={handleFieldClick}>
+      {fieldFigure && returnFigure(fieldFigure.val)}
   </div>
   )
 }

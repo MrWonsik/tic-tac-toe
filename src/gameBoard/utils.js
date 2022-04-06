@@ -9,7 +9,7 @@ export const WIN = [
   [7, 5, 3],
 ];
 
-export const POSIBILITY_WIN = [
+export const POSSIBILITY_WIN = [
   [1, 2],
   [1, 3],
   [1, 4],

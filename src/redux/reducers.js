@@ -1,9 +1,9 @@
-import { FIELD_CLICKED, RESTART_GAME, SELECT_FIGURE, OPONENT_FIELD_CLICKED, END_GAME } from "./actions";
-import utils from './utils' 
+import { FIELD_CLICKED, RESTART_GAME, SELECT_FIGURE, OPPONENT_FIELD_CLICKED, END_GAME } from "./actions";
+import utils from '../gameBoard/utils' 
 
 const initialState = { 
         playerFigure: "", 
-        oponentFigure: "",
+        opponentFigure: "",
         isSelectFigureDisabled: false, 
         game: {
             gameStart: false,
@@ -14,7 +14,7 @@ const initialState = {
         },
     }
 
-const getOponentFigure = (playerFigure) => (  playerFigure === "kolo" ? "krzyzyk" : "kolo" );
+const getOpponentFigure = (playerFigure) => (  playerFigure === "kolo" ? "krzyzyk" : "kolo" );
 
 export const ticTacToe = (state = initialState, action) => {
     const { type, payload } = action;
@@ -26,7 +26,7 @@ export const ticTacToe = (state = initialState, action) => {
             return {
                 ...state,
                 playerFigure: figureName,
-                oponentFigure: getOponentFigure(figureName),
+                opponentFigure: getOpponentFigure(figureName),
                 isSelectFigureDisabled: true,
                 game: {
                     ...state.game,
@@ -51,7 +51,7 @@ export const ticTacToe = (state = initialState, action) => {
         case RESTART_GAME: {
             return initialState
         }
-        case OPONENT_FIELD_CLICKED: {
+        case OPPONENT_FIELD_CLICKED: {
             const { id } = payload;
 
             return {
@@ -61,7 +61,7 @@ export const ticTacToe = (state = initialState, action) => {
                     isPlayerTurn: true, 
                     gameMap: [
                         ...state.game.gameMap, 
-                        {id: id, val: state.oponentFigure}]}
+                        {id: id, val: state.opponentFigure}]}
             }
         }
         case END_GAME: {

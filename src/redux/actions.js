@@ -15,9 +15,9 @@ export const restartGame = () => ({
     type: RESTART_GAME,
 })
 
-export const OPONENT_FIELD_CLICKED = 'OPONENT_FIELD_CLICKED';
-export const oponentClickField = id => ({
-    type: OPONENT_FIELD_CLICKED,
+export const OPPONENT_FIELD_CLICKED = 'OPPONENT_FIELD_CLICKED';
+export const opponentClickField = id => ({
+    type: OPPONENT_FIELD_CLICKED,
     payload: { id },
 })
 
